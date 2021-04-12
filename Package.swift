@@ -5,8 +5,10 @@ import PackageDescription
 let package = Package(
     name: "Calculator",
     targets: [
-        .target(name: "Calculator"),
-        .testTarget(name: "CalculatorTests", 
+        .target(name: "CalculatorCore"),
+        .target(name: "Calculator",
+                dependencies: ["CalculatorCore"]),
+        .testTarget(name: "CalculatorTests",
                     dependencies: ["Calculator"]),
     ]
 )
