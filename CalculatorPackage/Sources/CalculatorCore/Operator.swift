@@ -1,4 +1,4 @@
-public enum Operator: String {
+public enum Operator: String, CaseIterable {
     case plus = "+"
     case minus = "-"
     case divide = "/"

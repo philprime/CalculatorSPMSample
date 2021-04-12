@@ -11,7 +11,7 @@ import CalculatorCore
 struct ContentView: View {
 
     @State var number1 = ""
-    @State var op = "+"
+    @State var op: Operator = .plus
     @State var number2 = ""
 
     var body: some View {
@@ -21,8 +21,8 @@ struct ContentView: View {
                 .padding(10)
                 .cornerRadius(5)
             Picker("Operator", selection: $op) {
-                ForEach(["+", "-", "*", "/"], id: \.self) { op in
-                    Text(op)
+                ForEach(Operator.allCases, id: \.self) { op in
+                    Text(op.rawValue)
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
@@ -38,7 +38,15 @@ struct ContentView: View {
     }
 
     var result: String {
-        return "?"
+        guard let num1 = Double(number1) else {
+            return number1 + " is not a valid number"
+        }
+        guard let num2 = Double(number2) else {
+            return number2 + " is not a valid number"
+        }
+        // Force unwrap the operator for now, as we can be sure that we only added known ones
+        let result = calculate(number1: num1, op: op, number2: num2)
+        return result.description
     }
 }
 

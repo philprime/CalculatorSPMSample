@@ -8,7 +8,10 @@ let package = Package(
         .library(name: "CalculatorCore", targets: ["CalculatorCore"])
     ],
     targets: [
-        .target(name: "CalculatorCore"),
+        .target(name: "CalculatorCore", dependencies: [
+            "CalculatorLogger"
+        ]),
+        .target(name: "CalculatorLogger"),
         .target(name: "Calculator",
                 dependencies: ["CalculatorCore"]),
         .testTarget(name: "CalculatorTests",

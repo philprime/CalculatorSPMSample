@@ -7,7 +7,10 @@ let arguments = CommandLine.arguments
 // We expect three parameters: first number, operator, second number
 func printUsage(message: String) {
     let name = URL(string: CommandLine.arguments[0])!.lastPathComponent
-    print("usage: " + name + " number1 [+ | - | / | *] number2")
+    let operators = Operator.allCases
+        .map(\.rawValue)
+        .joined(separator: " | ")
+    print("usage: \(name) number1 [\(operators)] number2")
     print("    " + message)
 }
 
