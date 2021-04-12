@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CalculatorCore
 
 struct ContentView: View {
 

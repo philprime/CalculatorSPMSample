@@ -4,6 +4,9 @@ import PackageDescription
 
 let package = Package(
     name: "Calculator",
+    products: [
+        .library(name: "CalculatorCore", targets: ["CalculatorCore"])
+    ],
     targets: [
         .target(name: "CalculatorCore"),
         .target(name: "Calculator",
